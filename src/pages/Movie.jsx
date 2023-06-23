@@ -1,5 +1,4 @@
-import { List, StyledLink } from 'components/Home/Home.styled';
-
+import { List, StyledLink, MovieItem } from 'components/Home/Home.styled';
 import {
   SearchForm,
   SearchFormButton,
@@ -13,6 +12,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import React from 'react';
 import Loader from 'components/Loader/Loader';
+import { Container } from 'components/Container/Container.styled';
 
 const Movie = () => {
   const location = useLocation();
@@ -46,7 +46,7 @@ const Movie = () => {
   };
 
   return (
-    <>
+    <Container>
       <SearchForm>
         <SearchFormInput
           name="name"
@@ -64,14 +64,14 @@ const Movie = () => {
       {loading && <Loader />}
       <List>
         {movies.map(({ title, id }) => (
-          <li key={id}>
+          <MovieItem key={id}>
             <StyledLink to={`${id}`} state={{ from: location }}>
               {title}
             </StyledLink>
-          </li>
+          </MovieItem>
         ))}
       </List>
-    </>
+    </Container>
   );
 };
 

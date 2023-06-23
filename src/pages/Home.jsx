@@ -1,9 +1,10 @@
-import { List, StyledLink } from 'components/Home/Home.styled';
+import { List, StyledLink, MovieItem } from 'components/Home/Home.styled';
 import Loader from 'components/Loader/Loader';
 
 import { fetchPopularMovies } from '../services/api';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { Container } from 'components/Container/Container.styled';
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -24,18 +25,18 @@ const Home = () => {
     getPopularMovies();
   }, []);
   return (
-    <>
+    <Container>
       {loading && <Loader />}
       <List>
         {data.map(({ id, title }) => (
-          <li key={id}>
+          <MovieItem key={id}>
             <StyledLink to={`movie/${id}`} state={{ from: location }}>
               {title}
             </StyledLink>
-          </li>
+          </MovieItem>
         ))}
       </List>
-    </>
+    </Container>
   );
 };
 
