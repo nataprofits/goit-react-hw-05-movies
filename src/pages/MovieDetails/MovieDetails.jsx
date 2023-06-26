@@ -1,11 +1,11 @@
 import { Container } from 'components/Container/Container.styled';
-import { fetchDetails } from '../services/api';
+import { fetchDetails } from '../../services/api';
 import { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import Loader from 'components/Loader/Loader';
-import MovieInfo from 'components/MovieDeteils/MovieDeteils';
+import MovieInfo from 'components/MovieInfo/MovieInfo';
 
 const MovieDetails = () => {
   const [details, setDetails] = useState(null);

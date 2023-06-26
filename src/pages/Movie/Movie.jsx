@@ -1,10 +1,10 @@
-import { List, StyledLink, MovieItem } from 'components/Home/Home.styled';
+import { List, StyledLink, MovieItem, StyledImg } from 'pages/Home/Home.styled';
 import {
   SearchForm,
   SearchFormButton,
   SearchFormInput,
-} from 'components/Movie/Movie.styled';
-import { fetchAnyMovie } from '../services/api';
+} from 'pages/Movie/Movie.styled';
+import { fetchAnyMovie } from '../../services/api';
 import { useEffect, useState } from 'react';
 import { ImSearch } from 'react-icons/im';
 import { useLocation, useSearchParams } from 'react-router-dom';
@@ -63,9 +63,18 @@ const Movie = () => {
       </SearchForm>
       {loading && <Loader />}
       <List>
-        {movies.map(({ title, id }) => (
+        {movies.map(({ title, id, poster_path }) => (
           <MovieItem key={id}>
             <StyledLink to={`${id}`} state={{ from: location }}>
+            <StyledImg
+                src={
+                  poster_path
+                    ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                    : `https://placehold.jp/300x450.png`
+                }
+                alt=""
+                width="300"
+              />
               {title}
             </StyledLink>
           </MovieItem>

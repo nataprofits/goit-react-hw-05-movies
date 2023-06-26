@@ -1,12 +1,10 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 
+export const Title = styled.h1`
+text-align: center;
+`
 export const List = styled.ul`
-/* display: flex;
-flex-direction: column;
-gap: 10px;
-margin-right:auto;
-margin-left:auto; */
 display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-gap: 16px;
@@ -44,3 +42,6 @@ color: black;
     text-decoration: underline;
   }
 `;
+export const StyledImg = styled.img`
+width: 100%;
+`

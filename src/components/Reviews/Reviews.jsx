@@ -36,7 +36,7 @@ const Reviews = () => {
             </li>
           ))
         ) : (
-          <p>😕 Sorry, there are no reviews for this movie yet.</p>
+          <h3>😕 Sorry, there are no reviews for this movie yet.</h3>
         )}
       </ul>
     </>

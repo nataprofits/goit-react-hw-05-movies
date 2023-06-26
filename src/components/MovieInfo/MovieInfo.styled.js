@@ -37,3 +37,6 @@ export const BackLink = styled(Link)`
     color: black;
   }
 `;
+export const Wrapper = styled.div`
+display:flex;
+gap:50px;`

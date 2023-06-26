@@ -2,9 +2,9 @@ import { BiArrowBack } from 'react-icons/bi';
 import {
   AdditionalWrapper,
   BackLink,
-} from '../MovieDeteils/MovieDeteils.styled';
-import { StyledLink } from 'components/Home/Home.styled';
-import { Wrapper } from '../MovieDetailsCard.styled/MovieDetailsCard.styled';
+  Wrapper,
+} from './MovieInfo.styled';
+import { StyledLink } from 'pages/Home/Home.styled';
 
 const MovieInfo = ({ details, location }) => {
   const { title, vote_average, overview, poster_path, release_date } = details;
