@@ -20,6 +20,7 @@ const Movie = () => {
   const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const name = searchParams.get('name');
+  console.log(name);
   useEffect(() => {
     if (!name) return;
     const getMovies = async () => {
@@ -27,7 +28,6 @@ const Movie = () => {
         setLoading(true);
         const response = await fetchAnyMovie(name);
         setMovies(response.data.results);
-        console.log(response.data.results);
       } catch (error) {
         console.log(error);
       } finally {
@@ -39,7 +39,9 @@ const Movie = () => {
   const handlerOnSubmit = evt => {
     evt.preventDefault();
     const form = evt.currentTarget;
-    if (!name.trim()) return toast.warn('Please, fill the field.');
+    if (!form.elements.name.value.trim()) {
+      return toast.warn('Please, fill the field.');
+    }
     const nextParams = name !== '' ? { name: form.elements.name.value } : {};
     setSearchParams(nextParams);
     form.reset();
@@ -47,10 +49,9 @@ const Movie = () => {
 
   return (
     <Container>
-      <SearchForm>
+      <SearchForm onSubmit={handlerOnSubmit}>
         <SearchFormInput
           name="name"
-          onSubmit={handlerOnSubmit}
           type="text"
           autocomplete="off"
           autoFocus
