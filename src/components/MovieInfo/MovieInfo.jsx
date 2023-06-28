@@ -1,15 +1,17 @@
 import { BiArrowBack } from 'react-icons/bi';
-import {
-  AdditionalWrapper,
-  BackLink,
-  Wrapper,
-} from './MovieInfo.styled';
+import { AdditionalWrapper, BackLink, Wrapper } from './MovieInfo.styled';
 import { StyledLink } from 'pages/Home/Home.styled';
+import { useLocation } from 'react-router-dom';
 
-const MovieInfo = ({ details, location }) => {
+// import { useState, useRef, useEffect } from 'react';
+// import { fetchDetails } from '../../services/api';
+// import Loader from 'components/Loader/Loader';
+
+const MovieInfo = ({ details }) => {
   const { title, vote_average, overview, poster_path, release_date } = details;
+ 
+ const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
-  console.log(backLinkHref);
   return (
     <>
       <BackLink to={backLinkHref}>
@@ -36,14 +38,15 @@ const MovieInfo = ({ details, location }) => {
         <p>Additional information</p>
         <ul>
           <li>
-            <StyledLink to="cast">Cast</StyledLink>
+            <StyledLink to="cast" state={{ ...location.state }}>Cast</StyledLink>
           </li>
           <li>
-            <StyledLink to="reviews">Reviews</StyledLink>
+            <StyledLink to="reviews" state={{ ...location.state }}>Reviews</StyledLink>
           </li>
         </ul>
       </AdditionalWrapper>
     </>
   );
 };
+
 export default MovieInfo;
